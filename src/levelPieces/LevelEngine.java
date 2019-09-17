@@ -8,22 +8,30 @@ import gameEngine.Moveable;
 public class LevelEngine {
 	
 	private int levelLength;
-	private char[] level;
+	private GamePiece[] level;
 
 	public LevelEngine() {
 		super();
-		this.levelLength = 15;
-		this.level = new char[levelLength];
+		this.levelLength = 5;
+		this.level = new GamePiece[levelLength];
 		
 	}
 
 	public void createLevel(int levelNum) {
+		switch(levelNum) {
+		case 0:
+			this.level = []
+		}
 		
 		
 	}
 
-	public ArrayList<GamePiece> getMovingPieces() {
+	public ArrayList<Moveable> getMovingPieces() {
+		
 		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<GamePiece> getInteractingPieces(){
 		return null;
 	}
 
