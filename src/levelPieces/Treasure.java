@@ -8,15 +8,19 @@ public class Treasure extends GamePiece {
 	public Treasure(char symbol, int location) {
 		super(symbol, location);
 	}
+
 	public Treasure(int location) {
 		super('T', location);
 	}
 
-
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
+		if (super.getLocation() == playerLocation) {
+			
+			return InteractionResult.GET_POINT;
+		}
+		return InteractionResult.NONE;
 		
-		return InteractionResult.GET_POINT;
 	}
 
 }

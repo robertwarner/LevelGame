@@ -9,11 +9,17 @@ public class River extends GamePiece{
 		super(symbol, location);
 		
 	}
+	public River(int location) {
+		super('_', location);
+		
+	}
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
-		
-		return InteractionResult.KILL;
+		if (super.getLocation() == playerLocation) {
+			return InteractionResult.KILL;
+		}
+		return InteractionResult.NONE;
 	}
 	
 	

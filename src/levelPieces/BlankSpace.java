@@ -9,7 +9,7 @@ public class BlankSpace extends GamePiece {
 		super(symbol, location);
 	}
 	public BlankSpace( int location) {
-		super('_', location);
+		super(' ', location);
 	}
 
 	@Override
