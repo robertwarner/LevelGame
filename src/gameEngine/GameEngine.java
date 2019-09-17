@@ -63,7 +63,7 @@ public class GameEngine {
 		// request data structures from LevelEngine
 		gameBoard = levels.getBoard();
 		movingPieces = levels.getMovingPieces();
-		interactingPieces = levels.getInteractingPieces();
+		interactingPieces = levels.getMovingPieces();
 		// reset player statistics, starting location determined
 		// by level engine
 		player.resetLevel(levels.getPlayerStartLoc());
