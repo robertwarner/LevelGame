@@ -13,6 +13,8 @@ public class LevelEngine {
 	private int numLevels;
 	private int currentLevel;
 	private Drawable[] level;
+	private ArrayList<Moveable> moveablePieces;
+	private ArrayList<GamePiece> interactingPieces;
 
 
 	public LevelEngine() {
@@ -20,13 +22,14 @@ public class LevelEngine {
 		this.levelLength = GameEngine.BOARD_SIZE;
 		this.numLevels = GameEngine.NUM_LEVELS;
 		this.currentLevel = 0;
-		
+		moveablePieces = new ArrayList<Moveable>();
+		interactingPieces = new ArrayList<GamePiece>(0);
 		
 		
 	}
 	
 	private Drawable[] makeBlankLevel() {
-		Drawable[] level = new GamePiece[levelLength];
+		Drawable[] level = new Drawable[levelLength];
 		for (int i = 0; i < this.levelLength; i++) {
 			level[i] = new BlankSpace(i);			
 		}
@@ -35,22 +38,32 @@ public class LevelEngine {
 	
 	private Drawable[] level1() {
 		Drawable[] level = makeBlankLevel();
-		level[10] = new River(10);
-		level[20] = new Treasure(20);
-		level[0] = new Player(0);
+		
+		interactingPieces.add(new River(10));
+		interactingPieces.add(new Treasure(20));
+
+		
 		return level;
 		
 	}
 	
 	private Drawable[] level2() {
 		Drawable[] level = makeBlankLevel();
-		level[10] = new River(10);
-		level[12] = new River(12);
-		level[14] = new River(14);
-		level[16] = new River(16);
-		level[18] = new River(18);
-		level[20] = new Treasure(20);
-		level[0] = new Player(0);
+		interactingPieces.clear();
+		moveablePieces.clear();
+		
+		interactingPieces.add(new River(10));
+		interactingPieces.add(new River(12));
+		interactingPieces.add(new River(14));
+		interactingPieces.add(new River(16));
+		interactingPieces.add(new River(18));
+		interactingPieces.add(new Treasure(20));
+		
+		moveablePieces.add(new Ghost(6));
+		
+		
+		
+		
 		return level;
 		
 	}
@@ -73,9 +86,10 @@ public class LevelEngine {
 
 	public ArrayList<Moveable> getMovingPieces() {
 		
-		return null;
+		return moveablePieces;
 	}
 	public ArrayList<GamePiece> getInteractingPieces(){
+		return interactingPieces;
 		
 	}
 

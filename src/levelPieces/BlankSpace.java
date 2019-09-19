@@ -3,19 +3,22 @@ package levelPieces;
 import gameEngine.Drawable;
 import gameEngine.InteractionResult;
 
-public class BlankSpace extends GamePiece {
+public class BlankSpace implements Drawable {
 
-	public BlankSpace(char symbol, int location) {
-		super(symbol, location);
+	private int location;
+	private char symbol = ' ';
+	
+	
+	public BlankSpace(int location) {
+		this.location = location; 
 	}
-	public BlankSpace( int location) {
-		super(' ', location);
-	}
-
+	
 	@Override
-	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
-		return InteractionResult.NONE;
+	public void draw() {
+		System.out.print(this.symbol);
+		
 	}
+
 		
 
 }
