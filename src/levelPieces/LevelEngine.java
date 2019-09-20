@@ -29,19 +29,29 @@ public class LevelEngine {
 	}
 	
 	private Drawable[] makeBlankLevel() {
-		Drawable[] level = new Drawable[levelLength];
-		for (int i = 0; i < this.levelLength; i++) {
-			level[i] = new BlankSpace(i);			
-		}
+		this.level = new Drawable[levelLength];
 		return level;
 	}
 	
 	private Drawable[] level1() {
-		Drawable[] level = makeBlankLevel();
+		this.level = makeBlankLevel();
+		interactingPieces.clear();
+		moveablePieces.clear();
 		
-		interactingPieces.add(new River(10));
-		interactingPieces.add(new Treasure(20));
+		this.level[5] = new Flower();
+		interactingPieces.add(new River(8));
+		interactingPieces.add(new Treasure(12));
+		interactingPieces.add(new Portal(20));
+		Ghost ghost = new Ghost(18);
+		moveablePieces.add(ghost);
+		interactingPieces.add(ghost);
+		
+				
+		for(GamePiece interactingPiece : interactingPieces) {
+			this.level[interactingPiece.getLocation()] = interactingPiece;
+		}
 
+		
 		
 		return level;
 		
@@ -59,9 +69,21 @@ public class LevelEngine {
 		interactingPieces.add(new River(18));
 		interactingPieces.add(new Treasure(20));
 		
-		moveablePieces.add(new Ghost(6));
+
 		
+		Ghost ghost = new Ghost(6);
+		moveablePieces.add(ghost);
+		interactingPieces.add(ghost);
+	
 		
+		Ninja  ninja = new Ninja(19);
+		moveablePieces.add(ninja);
+		interactingPieces.add(ninja);
+
+		
+		for(GamePiece interactingPiece : interactingPieces) {
+			this.level[interactingPiece.getLocation()] = interactingPiece;
+		}
 		
 		
 		return level;
@@ -70,6 +92,7 @@ public class LevelEngine {
 	
 
 	public void createLevel(int levelNum) {
+		this.level = null;
 		switch(levelNum) {
 		case 1:
 			this.level = level1();
@@ -86,7 +109,7 @@ public class LevelEngine {
 
 	public ArrayList<Moveable> getMovingPieces() {
 		
-		return moveablePieces;
+		return (moveablePieces);
 	}
 	public ArrayList<GamePiece> getInteractingPieces(){
 		return interactingPieces;

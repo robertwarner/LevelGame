@@ -38,7 +38,7 @@ public abstract class GamePiece implements Drawable {
 	 * 
 	 */
 	public void draw() {
-		System.out.print(symbol);
+		System.out.print(this.symbol);
 	}
 
 	/**

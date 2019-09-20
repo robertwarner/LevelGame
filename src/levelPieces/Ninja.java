@@ -20,10 +20,10 @@ public class Ninja extends GamePiece implements Moveable {
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
-		if(playerLocation == super.getLocation()) {
+		if(playerLocation == this.getLocation()) {
 			return InteractionResult.KILL;
 		}
-		if(Math.abs(playerLocation - super.getLocation()) == 1) {
+		if(Math.abs(playerLocation - this.getLocation()) == 1) {
 			return InteractionResult.HIT;
 		}
 		return InteractionResult.NONE;
@@ -32,12 +32,14 @@ public class Ninja extends GamePiece implements Moveable {
 
 	@Override
 	public void move(Drawable[] gameBoard, int playerLocation) {
+		gameBoard[this.getLocation()] = null;
 		Random random = new Random();
 		int nextLocation = random.nextInt(gameBoard.length);
-		while (nextLocation == playerLocation) {
+		while (gameBoard[nextLocation] != null) {
 			nextLocation = random.nextInt(gameBoard.length);
 		}
 		this.setLocation(nextLocation);
+		gameBoard[this.getLocation()] = this;
 	}
 
 }

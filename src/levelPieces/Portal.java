@@ -3,26 +3,24 @@ package levelPieces;
 import gameEngine.Drawable;
 import gameEngine.InteractionResult;
 
-public class River extends GamePiece{
-	
-	public River(char symbol, int location) {
+public class Portal extends GamePiece {
+
+	public Portal(char symbol, int location) {
 		super(symbol, location);
-		
 	}
-	public River(int location) {
-		super('R', location);
-		
+
+	public Portal(int location) {
+		super('@', location);
 	}
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if (super.getLocation() == playerLocation) {
-			return InteractionResult.KILL;
+			
+			return InteractionResult.ADVANCE;
 		}
-		
 		return InteractionResult.NONE;
+		
 	}
-	
-	
 
 }
