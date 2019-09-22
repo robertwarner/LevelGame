@@ -1,3 +1,8 @@
+/**
+ * @author Robert Warner
+ * @author Jo Westrap
+ */
+
 package levelPieces;
 
 import gameEngine.Drawable;
@@ -12,7 +17,7 @@ public class Treasure extends GamePiece {
 	public Treasure(int location) {
 		super('T', location);
 	}
-
+	//Awards player a point for landing on it. Deletes it self after award is given
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if (super.getLocation() == playerLocation) {
