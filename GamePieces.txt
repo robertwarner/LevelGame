@@ -1,0 +1,26 @@
+* Treasure:
+  Does not move.
+  Interaction Result: Player GETS A POINT for visiting that index.
+
+* River:
+  Does not move.
+  Interaction Result: Player is KILLed by stepping on that index.
+
+* Ghost: 
+  Moves steadily to the right, with wraparound.
+  Interaction Result: if player is at the index adjacent to and to the right of
+     the Ghost (Ghost.location + 1), player is KILLED.
+
+* Ninja: 
+  Teleports to a random index each turn.
+  Interaction Result: if player is within 1 to 3 indexes away, player is HIT.
+      If the player is at the same index, player is KILLed.
+
+* Portal:
+  Does not move.
+  Interaction Result: Player ADVANCES TO NEXT LEVEL by visiting that index.
+
+* Flower:
+  Does not extend GamePiece, only implements Drawable.
+  It deletes itself when the player tramples on it, but it has no
+     effect / InteractionResult on the player.

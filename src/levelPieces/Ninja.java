@@ -14,28 +14,29 @@ import gameEngine.InteractionResult;
 public class Ninja extends GamePiece implements Moveable {
 	public Ninja(char symbol, int location) {
 		super(symbol, location);
-		
+
 	}
-	//Use 'X' as symbol for Ninja
+
+	// Use 'X' as symbol for Ninja
 	public Ninja(int location) {
 		super('X', location);
-		
+
 	}
-	
-	//Does HIT of damage when one space away
-	//KILLS when player and Ninja in same place
+
+	// Does HIT of damage when 1-3 spaces away
+	// KILL when location == playerLocation
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
-		if(playerLocation == this.getLocation()) {
+		int distanceFromPlayer = Math.abs(playerLocation - this.getLocation());
+		if (super.getLocation() == playerLocation) {
 			return InteractionResult.KILL;
-		}
-		if(Math.abs(playerLocation - this.getLocation()) == 1) {
+		} else if (distanceFromPlayer >= 1 && distanceFromPlayer <= 3) {
 			return InteractionResult.HIT;
 		}
 		return InteractionResult.NONE;
-		
 	}
-	//Randomly moves to a place where there is no object.
+
+	// Randomly moves to a place where there is no object.
 	@Override
 	public void move(Drawable[] gameBoard, int playerLocation) {
 		gameBoard[this.getLocation()] = null;

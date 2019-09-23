@@ -1,6 +1,6 @@
 /**
  * @author Robert Warner
- * @author Jo Westrap
+ * @author Jo Westarp
  */
 
 package levelPieces;
@@ -13,19 +13,20 @@ public class Portal extends GamePiece {
 	public Portal(char symbol, int location) {
 		super(symbol, location);
 	}
-	
+
 	public Portal(int location) {
 		super('@', location);
 	}
-	//Advances player to next level when player is in same spot
+
+	// Advances player to next level when player is in same spot
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if (super.getLocation() == playerLocation) {
-			
+
 			return InteractionResult.ADVANCE;
 		}
 		return InteractionResult.NONE;
-		
+
 	}
 
 }

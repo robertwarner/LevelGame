@@ -17,7 +17,8 @@ public class Treasure extends GamePiece {
 	public Treasure(int location) {
 		super('T', location);
 	}
-	//Awards player a point for landing on it. Deletes it self after award is given
+
+	// Awards player a point for landing on it. Deletes itself after award is given.
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if (super.getLocation() == playerLocation) {
@@ -25,7 +26,7 @@ public class Treasure extends GamePiece {
 			return InteractionResult.GET_POINT;
 		}
 		return InteractionResult.NONE;
-		
+
 	}
 
 }
