@@ -1,3 +1,8 @@
+/*
+ * @author Robert Warner
+ * @author Josephine Westarp
+ */
+
 package tests;
 
 import static org.junit.Assert.*;
